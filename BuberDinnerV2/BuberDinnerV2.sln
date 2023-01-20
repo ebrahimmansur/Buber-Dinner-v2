@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C00E4C00-DBED-4967-968C-7096E809A409}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E96B83BE-2899-47A5-93C0-89BE59A8475D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{5E9F7DAC-5D94-4550-A8B2-082AE90B494D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinnerV2.Host", "BuberDinnerV2.Host\BuberDinnerV2.Host.csproj", "{17C15F0E-A1DE-4369-B332-4103A4F5A788}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17C15F0E-A1DE-4369-B332-4103A4F5A788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C15F0E-A1DE-4369-B332-4103A4F5A788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C15F0E-A1DE-4369-B332-4103A4F5A788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C15F0E-A1DE-4369-B332-4103A4F5A788}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5E9F7DAC-5D94-4550-A8B2-082AE90B494D} = {C00E4C00-DBED-4967-968C-7096E809A409}
+		{17C15F0E-A1DE-4369-B332-4103A4F5A788} = {5E9F7DAC-5D94-4550-A8B2-082AE90B494D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0DE7C29-1E6B-4A02-A252-F84B01A29F42}
+	EndGlobalSection
+EndGlobal
