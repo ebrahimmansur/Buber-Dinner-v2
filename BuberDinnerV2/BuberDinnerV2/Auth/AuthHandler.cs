@@ -4,6 +4,9 @@ using BuberDinnerV2.CrossCuttingConcerns;
 
 namespace BuberDinnerV2.Auth
 {
+    /// <summary>
+    /// The model encapsulate the auth process.
+    /// </summary>
     public class AuthHandler : ILoginHandler, IRegisterHandler
     {
         public Task<ResultModel<RegisterResultModel>> HandelAsync(RegisterRequestModel requestModel)

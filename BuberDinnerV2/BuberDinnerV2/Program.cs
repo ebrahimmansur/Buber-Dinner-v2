@@ -1,4 +1,5 @@
 
+using BuberDinnerV2.CrossCuttingConcerns.DI;
 using BuberDinnerV2.Host;
 
 namespace BuberDinnerV2
@@ -9,7 +10,7 @@ namespace BuberDinnerV2
         {
            WebApplication
                 .CreateBuilder(args)
-                .AddServices()
+                .AddServices(typeof(IServiceInstaller).Assembly)
                 .AddMiddleWares()
                 .Run();
           
