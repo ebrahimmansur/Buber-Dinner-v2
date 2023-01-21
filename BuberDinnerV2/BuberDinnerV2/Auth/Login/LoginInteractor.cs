@@ -3,26 +3,22 @@ using BuberDinnerV2.CrossCuttingConcerns;
 
 namespace BuberDinnerV2.Auth.Login
 {
+
+    /// <summary>
+    /// The Model encapsulate the business logic of login a user. 
+    /// </summary>
     public class LoginInteractor
     {
+        private readonly ILoginHandler _loginHandler;
 
-        public Task<ResultModel<LoginResultModel>> Execute( LoginRequestModel request)
+        public LoginInteractor(ILoginHandler loginHandler)
         {
-
-            var data = new LoginResultModel(
-               Id: Guid.NewGuid(),
-               FirstName: "Test first Name",
-               LastName: "Test Last Name",
-               Email: request.Email,
-               Token: "Test-ejy33044-33223-3ddw3-3r-3-3-3e-3-e-3-efdfsdvdsv"
-               );
-
-
-            var result = ResultModel<LoginResultModel>.Success(data);
-
-            return Task.FromResult(result);
-
+            _loginHandler = loginHandler;
         }
+
+        public async Task<ResultModel<LoginResultModel>> ExecuteAsync(LoginRequestModel request)
+            //Process the request and vaildat with business rules - value objects next time.
+            => await _loginHandler.HandleAsync(request);
 
     }
 }

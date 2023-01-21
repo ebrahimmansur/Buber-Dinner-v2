@@ -3,6 +3,7 @@
 namespace BuberDinnerV2.Auth.Login
 {
 
+
     [ApiController]
     [Tags("Auth")]
     [Route("api/[controller]")]
@@ -16,10 +17,11 @@ namespace BuberDinnerV2.Auth.Login
         }
 
         [HttpPost] 
-        public async Task<IActionResult> login(LoginRequestModel requestModel)
+        public async Task<IActionResult> Login(LoginRequestModel requestModel)
         {
+            //TODO:Should only handle reciving the requst and process vaild responce.
 
-            var result = await _interactor.Execute(requestModel);
+            var result = await _interactor.ExecuteAsync(requestModel);
             if (result.IsSuccess())
             {
 
