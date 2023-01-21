@@ -1,6 +1,6 @@
-﻿using BuberDinnerV2.Auth.Login;
+﻿using BuberDinnerV2.Auth;
+using BuberDinnerV2.Auth.Login;
 using BuberDinnerV2.Auth.Register;
-using BuberDinnerV2.CrossCuttingConcerns.Auth;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace BuberDinnerV2.Host

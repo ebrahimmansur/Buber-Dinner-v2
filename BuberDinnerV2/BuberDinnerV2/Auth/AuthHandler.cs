@@ -1,9 +1,10 @@
 ﻿using BuberDinnerV2.Auth.Login;
 using BuberDinnerV2.Auth.Register;
+using BuberDinnerV2.CrossCuttingConcerns;
 
-namespace BuberDinnerV2.CrossCuttingConcerns.Auth
+namespace BuberDinnerV2.Auth
 {
-    public class AuthHandler : ILoginHandler,IRegisterHandler
+    public class AuthHandler : ILoginHandler, IRegisterHandler
     {
         public Task<ResultModel<RegisterResultModel>> HandelAsync(RegisterRequestModel requestModel)
         {
