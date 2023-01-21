@@ -1,4 +1,4 @@
-namespace BuberDinnerV2.Host
+namespace BuberDinnerV2.Api
 {
     public class WeatherForecast
     {
