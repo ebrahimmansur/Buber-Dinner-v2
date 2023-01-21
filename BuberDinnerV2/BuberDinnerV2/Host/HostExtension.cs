@@ -19,33 +19,30 @@ namespace BuberDinnerV2.Host
 
         public static WebApplicationBuilder AddServices(this WebApplicationBuilder builder,params Assembly[] assemblies)
         {
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
 
 
-          var serviceInstallers =  assemblies
+            //process the assemblies
+            // select the types from the assmbeles
+            // filter the types for Iservice instsllers
+            // for each type that implemtnts the interface
+            // create an instance and cast to IServicese
+            // loop over each one and call install
+            var serviceInstallers =  assemblies
                 .SelectMany(a => a.DefinedTypes)
                 .Where(IsAssignableToType<IServiceInstaller>)
                 .Select(Activator.CreateInstance)
                 .Cast<IServiceInstaller>();
-
-
 
             foreach (var installer in serviceInstallers)
             {
                 installer.Install(builder.Services,builder.Configuration);
             }
 
-
-       
-
-            builder.Services.AddControllers();
-          //  builder.Services.AddScoped<LoginInteractor>();
-           // builder.Services.AddScoped<RegisterInteractor>();
-           // builder.Services.TryAddScoped<ILoginHandler, AuthHandler>();
-           // builder.Services.TryAddScoped<IRegisterHandler, AuthHandler>();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
             return builder;
         }
 
