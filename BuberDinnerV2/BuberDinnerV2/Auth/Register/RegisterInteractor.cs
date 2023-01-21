@@ -8,21 +8,15 @@ namespace BuberDinnerV2.Auth.Register
     /// </summary>
     public class RegisterInteractor
     {
-      public  Task<ResultModel<RegisterResultModel>> Execute(RegisterRequestModel request) {
+        private readonly IRegisterHandler _registerHandler;
 
-
-            var data = new RegisterResultModel(
-                Id:Guid.NewGuid(),
-                FirstName:request.FirstName,
-                LastName: request.LastName,
-                Email:request.Email,
-                Token:"Test-ejy33044-33223-3ddw3-3r-3-3-3e-3-e-3-efdfsdvdsv"
-                );
-
-            var result = ResultModel<RegisterResultModel>.Success(data);
-            
-            return Task.FromResult(result);
-
+        public RegisterInteractor(IRegisterHandler registerHandler)
+        {
+            _registerHandler = registerHandler;
         }
+
+        public async Task<ResultModel<RegisterResultModel>> ExecuteAsync(RegisterRequestModel request)
+            //Process the request and vaildat with business rules - value objects next time.
+            => await _registerHandler.HandelAsync(request);
     }
 }

@@ -16,10 +16,12 @@ namespace BuberDinnerV2.Auth.Register
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterRequestModel resultModel)
+        public async Task<IActionResult> RegisterAsync(RegisterRequestModel resultModel)
         {
+            //TODO:Should only handle reciving the requst and process vaild responce.
+            
 
-            var result = await _registerInteractor.Execute(resultModel);
+            var result = await _registerInteractor.ExecuteAsync(resultModel);
             if (result.IsSuccess())
             {
                 return Ok(result.SuccessData);
