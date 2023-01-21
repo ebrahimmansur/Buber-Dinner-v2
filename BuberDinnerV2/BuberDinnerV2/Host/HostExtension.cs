@@ -1,4 +1,7 @@
-﻿namespace BuberDinnerV2.Host
+﻿using BuberDinnerV2.Auth.Login;
+using BuberDinnerV2.Auth.Register;
+
+namespace BuberDinnerV2.Host
 {
 
     /// <summary>
@@ -11,6 +14,8 @@
         public static WebApplicationBuilder AddServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddControllers();
+            builder.Services.AddScoped<LoginInteractor>();
+            builder.Services.AddScoped<RegisterInteractor>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
