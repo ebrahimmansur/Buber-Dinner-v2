@@ -1,5 +1,7 @@
 ﻿using BuberDinnerV2.Auth.Login;
 using BuberDinnerV2.Auth.Register;
+using BuberDinnerV2.CrossCuttingConcerns.Auth;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace BuberDinnerV2.Host
 {
@@ -16,6 +18,8 @@ namespace BuberDinnerV2.Host
             builder.Services.AddControllers();
             builder.Services.AddScoped<LoginInteractor>();
             builder.Services.AddScoped<RegisterInteractor>();
+            builder.Services.TryAddScoped<ILoginHandler, AuthHandler>();
+            builder.Services.TryAddScoped<IRegisterHandler, AuthHandler>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
