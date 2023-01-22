@@ -9,14 +9,27 @@ namespace BuberDinnerV2.Auth
     /// </summary>
     public class AuthHandler : ILoginHandler, IRegisterHandler
     {
+        private readonly JwtTokenGenerator _jwtTokenGenerator;
+
+        public AuthHandler(JwtTokenGenerator jwtTokenGenerator)
+        {
+            _jwtTokenGenerator = jwtTokenGenerator;
+        }
+
         public Task<ResultModel<RegisterResultModel>> HandelAsync(RegisterRequestModel requestModel)
         {
+            string token = _jwtTokenGenerator.Execute(
+             id: Guid.NewGuid(),
+             firstName: requestModel.FirstName,
+             lastName: requestModel.LastName
+             );
+
             var data = new RegisterResultModel(
                 Id: Guid.NewGuid(),
                 FirstName: requestModel.FirstName,
                 LastName: requestModel.LastName,
                 Email: requestModel.Email,
-                Token: "Test-ejy33044-33223-3ddw3-3r-3-3-3e-3-e-3-efdfsdvdsv"
+                Token: token
                 );
 
             var result = ResultModel<RegisterResultModel>.Success(data);
@@ -26,17 +39,24 @@ namespace BuberDinnerV2.Auth
 
         public Task<ResultModel<LoginResultModel>> HandleAsync(LoginRequestModel loginRequest)
         {
+            //handel checking if user exists
+            //handle to generate token from 
+
+            string token = _jwtTokenGenerator.Execute(
+                id: Guid.NewGuid(),
+                firstName: "Ebarahim",
+                lastName: "Mansure"
+                );
+            
             var data = new LoginResultModel(
                Id: Guid.NewGuid(),
                FirstName: "Test first Name",
                LastName: "Test Last Name",
                Email: loginRequest.Email,
-               Token: "Test-ejy33044-33223-3ddw3-3r-3-3-3e-3-e-3-efdfsdvdsv"
+               Token:token
                );
 
-
             var result = ResultModel<LoginResultModel>.Success(data);
-
             return Task.FromResult(result);
         }
     }

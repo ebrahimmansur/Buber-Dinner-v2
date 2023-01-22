@@ -10,10 +10,14 @@ namespace BuberDinnerV2.Auth
         public void Install(IServiceCollection services, IConfiguration configuration)
         {
 
+
+            services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
+            services.AddSingleton<JwtTokenGenerator>();
             services.AddScoped<LoginInteractor>();
             services.AddScoped<RegisterInteractor>();
             services.TryAddScoped<ILoginHandler, AuthHandler>();
             services.TryAddScoped<IRegisterHandler, AuthHandler>();
+            services.AddScoped<JwtTokenGenerator>();
         }
     }
 }
